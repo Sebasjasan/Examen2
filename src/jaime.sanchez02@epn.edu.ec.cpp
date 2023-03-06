@@ -2,7 +2,7 @@
 #include <fstream>
 #include <windows.h>
 #include <cstdlib>
-#include "../lib/colores.h"
+#include "../lib/jsColores.h"
 
 using namespace std;
 
