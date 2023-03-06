@@ -15,9 +15,9 @@ void LeerArchivo(string pathFile)
         do 
         {
             getline( f, s );
-            cout << s << endl;
-            if (parrafo++%2==0)
-            getchar();  // Para presentar de uno en uno
+            cout << "\t" << s << endl;
+            //if (parrafo++%2==0)
+            //getchar();  // Para presentar de uno en uno
         }while( !f.eof() );
     f.close();
 }
