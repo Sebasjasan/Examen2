@@ -22,13 +22,19 @@ void jsLeerArchivo( string pathFile)
 {
     string s;
     fstream f;
-    ifstream archivo(pathFile.c_str());
-    string linea;
-    cout<<"[+]Leyendo Coordenadas ..."<<endl;
+    ifstream jsArch(pathFile.c_str());
+    string jsLinea;
+    int contador;
+    cout<<"\t [+]Leyendo Coordenadas"<<endl;
+    cout<<"\t Cap,    Geo,    Tipo Arsenal"<<endl;
     if (!f.is_open()) 
     {
-        while (getline(archivo, linea)) 
+        while (getline(jsArch, jsLinea)) 
         {
+            if(contador==0){
+                contador++;
+                continue;
+            }
             int ind =0;
             string c= "-"; 
             for(int i=0; i<= 100; i++)
@@ -36,11 +42,11 @@ void jsLeerArchivo( string pathFile)
             if(i % 4 ==0)
             ind =0;
                 cout    << "\r" << c[ind++]   
-                << "      " << i << "%"<<"   ";
-            Sleep(10);
+                << " " << i << "%"<<"   ";
+            Sleep(2);
         }
             
-            cout << linea << endl;
+            cout << jsLinea << endl;
         }
         f.close();
     }
@@ -48,24 +54,6 @@ void jsLeerArchivo( string pathFile)
     {
         cout << "No se pudo abrir el archivo." << endl;
     }
-}
-
-void LeerArchivo(string pathFile)
-{
-    cout << COLOR_GREEN;
-    int parrafo = 1;
-    string s;
-    fstream f;
-    f.open(pathFile, ios_base::in);
-    if (!f.is_open())
-        cout << "Error de abrir el archivo." << endl;
-    else
-        do
-        {
-            getline(f, s);
-            cout << s << endl;
-        } while (!f.eof());
-    f.close();
 }
 
 void jsDatos()
@@ -121,24 +109,26 @@ void jsVerArbol(nodo *jsArbol, int n)
 
 int main()
 {
-    jsLeerArchivo(".txt/jsCoordenadas.txt");
-    system("pause");
-    system("cls"); 
-    jsDatos();
-    system("pause");
-    system("cls");
-    cout << "\n";
+    // cout << COLOR_GREEN;
+    // jsLeerArchivo(".txt/jsCoordenadas.txt");
+    // system("pause");
+    // system("cls"); 
+    // jsDatos();
+    // system("pause");
+    // system("cls");
+    // cout << "\n";
 
     nodo *jsArbol = NULL;
 
     cout << COLOR_ROSE;
+    cout << "BOMBA TIPO: abcd" << endl;
     jsInsertar("GPS3 {bcd}", jsArbol);
-    jsInsertar("GPS2 {acd}", jsArbol);
-    jsInsertar("GPS1 {bcd}", jsArbol);
+    jsInsertar("GPS2 {ac}", jsArbol);
+    jsInsertar("GPS1 {bc}", jsArbol);
     jsInsertar("GPS4 {acd}", jsArbol);
-    jsInsertar("GPS6 {actd}", jsArbol);
-    jsInsertar("GPS5 {bctd}", jsArbol);
-    jsInsertar("GPS7 {aaabbctd}", jsArbol);
+    jsInsertar("GPS6 {act}", jsArbol);
+    jsInsertar("GPS5 {bct}", jsArbol);
+    jsInsertar("GPS7 {aaabbct}", jsArbol);
 
     jsVerArbol(jsArbol, 0);
     return 0;
