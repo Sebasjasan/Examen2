@@ -1,0 +1,10 @@
+Quito
+2000
+Guayaquil
+1600
+Cuenca
+9111
+AMBATO
+10000
+LOJA
+500
