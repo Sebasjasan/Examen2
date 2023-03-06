@@ -18,8 +18,39 @@ struct jsCoordenada
     jsCoordenada *Der;
 };
 
+void jsLeerArchivo( string pathFile) 
+{
+    string s;
+    fstream f;
+    ifstream archivo(pathFile.c_str());
+    string linea;
+    cout<<"[+]Leyendo Coordenadas ..."<<endl;
+    if (!f.is_open()) 
+    {
+        while (getline(archivo, linea)) 
+        {
+            int ind =0;
+            string c= "-"; 
+            for(int i=0; i<= 100; i++)
+        {   
+            if(i % 4 ==0)
+            ind =0;
+                cout    << "\r" << c[ind++]   
+                << "      " << i << "%"<<"   ";
+            Sleep(10);
+        }
+            
+            cout << linea << endl;
+        }
+        f.close();
+    }
+    else 
+    {
+        cout << "No se pudo abrir el archivo." << endl;
+    }
+}
 
-void jsLeerArchivo(string pathFile)
+void LeerArchivo(string pathFile)
 {
     cout << COLOR_GREEN;
     int parrafo = 1;
@@ -92,7 +123,7 @@ int main()
 {
     jsLeerArchivo(".txt/jsCoordenadas.txt");
     system("pause");
-    system("cls");
+    system("cls"); 
     jsDatos();
     system("pause");
     system("cls");
