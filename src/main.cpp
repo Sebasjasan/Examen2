@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <windows.h>
 #include <cstdlib>
 #include "../lib/colores.h"
 
@@ -16,6 +18,161 @@ struct jsCoordenada
     jsCoordenada *Der;
 };
 
+void LeerArchivo(string pathFile)
+{
+    cout << COLOR_GREEN;
+    int parrafo = 1;
+    string s;
+    fstream f;
+    f.open(pathFile, ios_base::in);
+    if (!f.is_open())
+        cout << "Error de abrir el archivo." << endl;
+    else
+        do
+        {
+            getline(f, s);
+            cout << s << endl;
+            // if (parrafo++%2==0)
+            // getchar();  // Para presentar de uno en uno
+        } while (!f.eof());
+    f.close();
+}
+
+void jsDatos()
+{
+    cout << COLOR_LBLUE;
+    cout << endl
+         << "[+] Informacion Arbol Binario de capacidad belica Ucrania" << endl
+         << "/Developer-Nombre:"<< jsNombre << endl
+         << "Developer-Cedula:" << jsCedula << endl
+         << "Capacidad Belica: 34" << endl
+         << "Coordenada-Total: 10" << endl
+         << "Coordenada/SecCarga: 1 7 5 2 3 6 4 1 2 3" << endl;
+}
+
+struct nodo
+{
+    string coordenada;
+    nodo *izq, *der;
+};
+
+void insertar(string coordenada, nodo *&arbol)
+{
+    if (arbol == NULL)
+    {
+        arbol = new nodo;
+        arbol->coordenada = coordenada;
+        arbol->izq = NULL;
+        arbol->der = NULL;
+    }
+    else if (coordenada < arbol->coordenada)
+    {
+        insertar(coordenada, arbol->izq);
+    }
+    else
+    {
+        insertar(coordenada, arbol->der);
+    }
+}
+
+void verArbol(nodo *arbol, int n)
+{
+    if (arbol == NULL)
+        return;
+    verArbol(arbol->der, n + 3);
+
+    for (int i = 0; i < n; i++)
+        cout << "   ";
+
+    cout << arbol->coordenada << endl;
+
+    verArbol(arbol->izq, n + 3);
+}
+
+int main()
+{
+    LeerArchivo(".txt/jsCoordenadas.txt");
+    system("pause");
+    system("cls");
+    jsDatos();
+    system("pause");
+    system("cls");
+    cout << "\n";
+
+    nodo *arbol = NULL;
+
+    cout << COLOR_ROSE;
+    insertar("GPS3 {bcd}", arbol);
+    insertar("GPS2 {ac}", arbol);
+    insertar("GPS1 {bc}", arbol);
+    insertar("GPS4 {acd}", arbol);
+    insertar("GPS6 {act}", arbol);
+    insertar("GPS3 {bcd}", arbol);
+    insertar("GPS2 {ac}", arbol);
+    insertar("GPS5 {bct}", arbol);
+    insertar("GPS7 {aaabbct}", arbol);
+    insertar("GPS1 {bc}", arbol);
+
+    verArbol(arbol, 0);
+    return 0;
+}
+
+    //struct nodo
+        // {
+        //      string coordenada;
+        //      nodo *izq, *der;
+        // };
+
+        // void insertar(string coordenada, nodo *&arbol)
+        // {
+        //      if (arbol == NULL)
+        //      {
+        //           arbol = new nodo;
+        //           arbol->coordenada = coordenada;
+        //           arbol->izq = NULL;
+        //           arbol->der = NULL;
+        //      }
+        //      else if (coordenada < arbol->coordenada)
+        //      {
+        //           insertar(coordenada, arbol->izq);
+        //      }
+        //      else
+        //      {
+        //           insertar(coordenada, arbol->der);
+        //      }
+        // }
+
+        // void verArbol(nodo *arbol, int n)
+        // {
+        //      if (arbol == NULL)
+        //           return;
+        //      verArbol(arbol->der, n + 3);
+
+        //      for (int i = 0; i < n; i++)
+        //           cout << "   ";
+
+        //      cout << arbol->coordenada << endl;
+
+        //      verArbol(arbol->izq, n + 3);
+        // }
+
+        // int main()
+        // {
+        //      nodo *arbol = NULL;
+
+        //      cout << COLOR_LBLUE;
+        //      insertar("GPS3 {bcd}\n", arbol);
+        //      insertar("GPS2 {ac}\n", arbol);
+        //      insertar("GPS1 {bc}\n", arbol);
+        //      insertar("GPS4 {acd}", arbol);
+        //      insertar("GPS6 {act}", arbol);
+        //      insertar("GPS3 {bcd}\n", arbol);
+        //      insertar("GPS2 {ac}\n", arbol);
+        //      insertar("GPS5 {bct}\n", arbol);
+        //      insertar("GPS7 {aaabbct}\n", arbol);
+        //      insertar("GPS1 {bc}\n", arbol);
+
+        //      verArbol(arbol, 0);
 
 // int const TKErr = -1;
 // int const TKOK = -2;
