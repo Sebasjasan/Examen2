@@ -1,10 +1,11 @@
-Quito
-2000
-Guayaquil
-1600
-Cuenca
-9111
-AMBATO
-10000
-LOJA
-500
+Cap,    Geo,    Tipo Arsenal
+3       GPS3
+2
+1
+4
+6
+3
+2
+5
+7
+1
