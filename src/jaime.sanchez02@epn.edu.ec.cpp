@@ -109,14 +109,14 @@ void jsVerArbol(nodo *jsArbol, int n)
 
 int main()
 {
-    // cout << COLOR_GREEN;
-    // jsLeerArchivo(".txt/jsCoordenadas.txt");
-    // system("pause");
-    // system("cls"); 
-    // jsDatos();
-    // system("pause");
-    // system("cls");
-    // cout << "\n";
+    cout << COLOR_GREEN;
+    jsLeerArchivo(".txt/jsCoordenadas.txt");
+    system("pause");
+    system("cls"); 
+    jsDatos();
+    system("pause");
+    system("cls");
+    cout << "\n";
 
     nodo *jsArbol = NULL;
 
